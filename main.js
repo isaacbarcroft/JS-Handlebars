@@ -40,13 +40,30 @@
                 const template = Handlebars.compile(source);
                 const context = data; 
                 const html = template(context); 
-                document.querySelector('.dog').innerHTML = html;
+                document.querySelector('.git-bio').innerHTML = html;
                 document.querySelector('.portrait').src = data.avatar_url
-                document.querySelector('.name').innerHTML= {...data}.login
+                document.querySelector('.name').innerHTML= {...data}.login    
             }
+
+            const generateHTML2 = (data) => {
+                const source = document.querySelector('#repos-script').innerHTML
+                const template = Handlebars.compile(source);
+                const context = data; 
+                const html = template(context); 
+                document.querySelector('#repos').innerHTML = html
+                document.querySelector('.repo-list').innerHTML = {...data}[0].html_url
+                console.log({...data})
+            }
+
+        
         fetch(`${BASE_URL}`)
             .then (response => response.json())
-            .then(data => generateHTML(data))
+            .then(data => generateHTML(data)),
            
+
+        fetch(`https://api.github.com/users/isaacbarcroft/repos`)
+            .then (response => response.json())
+            .then(data => generateHTML2(data))
         
-        })();
+        
+        })()
