@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="./styles/main.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,18 +15,20 @@
         <div><p class="name"> </p></div>
         </script>
     </div>
-    <div id="repos">
-        <script id="repos-script" type="text/x-handlebars-template">
-            <div class="repo-column">
-                {{#each html_url}}
-                <div class="repo-list">
-                    
-                </div>
-            {{/each}}
-            </div>
-        </script>
-    </div>
+    <div id="repos"></div>
 </div>
+
+
+
+    <script id="repos-script" type="text/x-handlebars-template">
+        {{#each repos}}
+        <div class="repo-column"></div>
+            <a class="button repo-list-1"  href="#">{{this.name}}<div class="repo-list-div"></div></a>                    
+        </div>
+        {{/each}}
+    </script>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="main.js"></script>
 

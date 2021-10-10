@@ -1,29 +1,7 @@
       
 
 
-    //     // const API_KEY ='c3e891b7e7b32db73c2d';
-    //     const BASE_URL = 'https://api.github.com/users/isaacbarcroft';
-    //     // const USER = 'isaacbarcroft'
-    
-    //     const generateHTML = (data) => {
-    //             console.log(document.querySelector('.dog'))
-    //             const source = document.querySelector('#avatar').innerHTML
-    //             const template = Handlebars.compile(source);
-    //             const context = data; 
-    //             const html = template(context); 
-    //             document.querySelector('.dog').innerHTML = html;
-    //         }
-            
-    //         fetch(`${BASE_URL}`)
-    //         .then(response => response.json())
-    //         .then(data => generateHTML(data))
-            
-    //     })();
-
-    //     generateHTML
-
-        // const API_KEY ='c3e891b7e7b32db73c2d'
-
+  
  (function (){
 
     // const generateHTML = (data, read, html) => {
@@ -45,15 +23,27 @@
                 document.querySelector('.name').innerHTML= {...data}.login    
             }
 
-            const generateHTML2 = (data) => {
-                const source = document.querySelector('#repos-script').innerHTML
-                const template = Handlebars.compile(source);
-                const context = data; 
-                const html = template(context); 
-                document.querySelector('#repos').innerHTML = html
-                document.querySelector('.repo-list').innerHTML = {...data}[0].html_url
-                console.log({...data})
-            }
+        const generateHTML2 = (data) => {
+            const source = document.querySelector('#repos-script').innerHTML;
+            const template = Handlebars.compile(source);
+            const context = {
+                repos: data,
+            }; 
+            const html = template(context); 
+            // console.log('html', html);
+            document.querySelector('#repos').innerHTML = html;
+        }
+
+        const generateHTML3 = (data) => {
+            const source = document.querySelector('#repos-script').innerHTML;
+            const template = Handlebars.compile(source);
+            const context = {
+                repos: data,
+            }; 
+            const html = template(context); 
+            // console.log('html', html);
+            document.querySelector('#repos').innerHTML = html;
+        }
 
         
         fetch(`${BASE_URL}`)
@@ -64,6 +54,10 @@
         fetch(`https://api.github.com/users/isaacbarcroft/repos`)
             .then (response => response.json())
             .then(data => generateHTML2(data))
+
+            fetch(`https://api.github.com/users/isaacbarcroft/repos`)
+            .then (response => response.json())
+            .then(data => generateHTML2(data))
         
         
-        })()
+})();
