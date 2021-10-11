@@ -13,17 +13,33 @@
         <script id="avatar" type="text/x-handlebars-template">   
         <div><img class="portrait" src="" alt="" /></div>
         <div><p class="name"> </p></div>
-        </script>
+        </script>   
     </div>
+    <div id="orgs"></div> 
     <div id="repos"></div>
 </div>
 
-
+<script id="org-script" type="text/x-handlebars-template">
+    {{#each orgs}}
+    <div class="org-column">
+       
+        <a class="button-org" href={{this.url}}><img src={{this.avatar_url}} /></a>  
+    </div>            
+    {{/each}}
+</script>
 
     <script id="repos-script" type="text/x-handlebars-template">
         {{#each repos}}
         <div class="repo-column"></div>
-            <a class="button repo-list-1"  href="#">{{this.name}}<div class="repo-list-div"></div></a>                    
+            <a class="button repo-list-1"  href="#">{{this.name}}<div class="repo-list-div"></div></a>   
+            <div class="public">
+                    {{#if this.private}}
+                    <h4 class="private">Private</h4> 
+                    {{else}}
+                    <h4 class="private">Public</h4> 
+                    {{/if}}
+                
+            </div>               
         </div>
         {{/each}}
     </script>

@@ -20,7 +20,8 @@
                 const html = template(context); 
                 document.querySelector('.git-bio').innerHTML = html;
                 document.querySelector('.portrait').src = data.avatar_url
-                document.querySelector('.name').innerHTML= {...data}.login    
+                document.querySelector('.name').innerHTML= {...data}.login
+
             }
 
         const generateHTML2 = (data) => {
@@ -35,14 +36,17 @@
         }
 
         const generateHTML3 = (data) => {
-            const source = document.querySelector('#repos-script').innerHTML;
+            const source = document.querySelector('#org-script').innerHTML;
+            console.log({source});
+            console.log({data});
             const template = Handlebars.compile(source);
             const context = {
-                repos: data,
+                orgs: data,
             }; 
             const html = template(context); 
-            // console.log('html', html);
-            document.querySelector('#repos').innerHTML = html;
+            console.log(document.querySelector('#orgs').innerHTML)
+            console.log(html)
+            document.querySelector('#orgs').innerHTML = html;
         }
 
         
@@ -55,9 +59,9 @@
             .then (response => response.json())
             .then(data => generateHTML2(data))
 
-            fetch(`https://api.github.com/users/isaacbarcroft/repos`)
+        fetch(`https://api.github.com/users/MC3D/orgs`)
             .then (response => response.json())
-            .then(data => generateHTML2(data))
+            .then(data => generateHTML3(data))
         
         
 })();
